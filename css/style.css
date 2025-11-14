@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 40px;
+  padding: 20px;
+  background: #ffffff97;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-section input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+}
+
+.search-section button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+}
+
+.weather-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.weather-box img {
+  width: 80px;
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.forecast-day {
+  padding: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.forecast-day img {
+  width: 50px;
+}
+
+.morning {
+  background-image: url("../img/Sunrise.png");
+}
+
+.afternoon {
+  background-image: url("../img/Noon.png");
+}
+
+.evening {
+  background-image: url("../img/Sunset.png");
+}
+
+.night {
+  background-image: url("../img/Night.png");
+}
