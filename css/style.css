@@ -148,3 +148,8 @@ h2 {
 .night {
   background-image: url("../img/Night.png");
 }
+@media (max-width: 768px) {
+  .container{
+    max-width: 1080px;
+  }
+}
