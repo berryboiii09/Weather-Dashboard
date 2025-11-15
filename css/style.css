@@ -1,24 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-:root{
+
+/*Theme modes*/
+:root {
   --backgroundColor: rgba(20, 20, 20, 0.46);
   --borderStyle: 1px solid rgba(255, 255, 255, 0.08);
-  --textColor:white;
+  --textColor: white;
   --iconShadow: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
   --searchBG: rgba(255, 255, 255, 0.08);
   --searchPH: #cbcbcb;
   --searchBGFocus: rgba(255, 255, 255, 0.1);
-  --seachBorderFocus : inset 0 0 0 1px rgba(255, 255, 255, 0.455);
+  --seachBorderFocus: inset 0 0 0 1px rgba(255, 255, 255, 0.455);
+  --buttonBG: none;
+  --buttonText: #3b82f6;
 }
-[data-theme="light"]{
-  --backgroundColor: rgba(255, 255, 255, 0.46);
+
+[data-theme="light"] {
+  --backgroundColor: rgba(255, 255, 255, 0.4);
   --borderStyle: 1px solid rgba(255, 255, 255, 0.289);
-  --textColor:black;
+  --textColor: black;
   --iconShadow: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
   --searchBG: rgba(0, 0, 0, 0.08);
-  --searchPH: #555555;
+  --searchPH: #2c2c2c;
   --searchBGFocus: rgba(0, 0, 0, 0.1);
-  --seachBorderFocus : inset 0 0 0 1px rgba(0, 0, 0, 0.455);
+  --seachBorderFocus: inset 0 0 0 1px rgba(0, 0, 0, 0.455);
+  --buttonBG: #2b60b5;
+  --buttonText: white;
 }
+
+/*Main Container*/
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -38,7 +47,7 @@ body {
   max-width: 600px;
   margin-top: 20px;
   padding: 25px;
-  background:var(--backgroundColor);
+  background: var(--backgroundColor);
   border-radius: 18px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(25px);
@@ -53,7 +62,9 @@ h2 {
   color: var(--textColor);
 }
 
+/*Theme Toggle*/
 .theme-toggle {
+  color: var(--textColor);
   background: none;
   border: 1px solid var(--textColor);
   padding: 0.5rem;
@@ -62,8 +73,15 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 
+.theme-toggle:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/*Search bar and buttons*/
 .search-section {
   display: flex;
   gap: 10px;
@@ -79,6 +97,11 @@ h2 {
   color: var(--textColor);
   outline: none;
   font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.search-section input:hover {
+  box-shadow: var(--seachBorderFocus);
 }
 
 .search-section input::placeholder {
@@ -95,17 +118,18 @@ h2 {
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  background: #3b82f6; /* Soft blue */
+  background: #3b82f6;
   color: white;
-  font-weight: 600;
-  transition: 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .search-section button:hover {
-  background: #2563eb; /* Darker blue */
+  background: var(--buttonBG);
+  color: var(--buttonText);
+  box-shadow: inset 0 0 0 1px #3b82f6;
 }
 
-
+/*Weather data*/
 .weather-box {
   text-align: center;
   margin-top: 20px;
@@ -133,6 +157,7 @@ h2 {
   filter: var(--iconShadow);
 }
 
+/*Backgrounds*/
 .morning {
   background-image: url("../img/Sunrise.png");
 }
@@ -148,8 +173,10 @@ h2 {
 .night {
   background-image: url("../img/Night.png");
 }
+
+/*Mobile Optimization*/
 @media (max-width: 768px) {
-  .container{
-    max-width: 1080px;
+  .container {
+    max-width: 400px;
   }
 }

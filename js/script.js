@@ -9,7 +9,7 @@ const temperature = document.getElementById("temperature");
 const description = document.getElementById("description");
 const forecastContainer = document.getElementById("forecast");
 
-
+/*Get weather by city name*/
 async function getWeatherByCity(city) {
   const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
@@ -25,6 +25,7 @@ async function getWeatherByCity(city) {
   getForecast(data.coord.lat, data.coord.lon);
 }
 
+/*Get weather by location*/
 function getLocationWeather() {
   navigator.geolocation.getCurrentPosition(
     (pos) => {
@@ -45,6 +46,7 @@ async function getWeatherByLocation(lat, lon) {
   getForecast(lat, lon);
 }
 
+/*Display weather from fetched location*/
 function displayCurrentWeather(data) {
   cityName.textContent = data.name;
   temperature.textContent = `${Math.round(data.main.temp)} °C`;
@@ -62,16 +64,16 @@ async function getForecast(lat, lon) {
 
   forecastContainer.innerHTML = "";
 
-  // Pick one data point per day at the same time (ex: 12:00)
-  const dailyData = data.list.filter(item => item.dt_txt.includes("12:00"));
+  
+  const dailyData = data.list.filter((item) => item.dt_txt.includes("12:00"));
 
   const next3Days = dailyData.slice(1, 4);
 
-  next3Days.forEach(day => {
+  next3Days.forEach((day) => {
     const date = new Date(day.dt_txt).toLocaleDateString("en-US", {
       weekday: "short",
       month: "short",
-      day: "numeric"
+      day: "numeric",
     });
 
     const icon = day.weather[0].icon;
@@ -89,6 +91,7 @@ async function getForecast(lat, lon) {
   });
 }
 
+/*Buttons*/
 searchBtn.addEventListener("click", () => {
   if (searchInput.value.trim() !== "") {
     getWeatherByCity(searchInput.value.trim());
@@ -97,6 +100,7 @@ searchBtn.addEventListener("click", () => {
 
 locationBtn.addEventListener("click", getLocationWeather);
 
+/*Update background by local time*/
 function updateBackgroundByTime() {
   const hour = new Date().getHours();
   const body = document.body;
@@ -112,5 +116,5 @@ function updateBackgroundByTime() {
   }
 }
 
-// Run on page load
+/*Display background on page load*/
 updateBackgroundByTime();
