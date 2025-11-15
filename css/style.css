@@ -1,29 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+:root{
+  --backgroundColor: rgba(20, 20, 20, 0.46);
+  --borderStyle: 1px solid rgba(255, 255, 255, 0.08);
+  --textColor:white;
+  --iconShadow: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  --searchBG: rgba(255, 255, 255, 0.08);
+  --searchPH: #cbcbcb;
+  --searchBGFocus: rgba(255, 255, 255, 0.1);
+  --seachBorderFocus : inset 0 0 0 1px rgba(255, 255, 255, 0.455);
+}
+[data-theme="light"]{
+  --backgroundColor: rgba(255, 255, 255, 0.46);
+  --borderStyle: 1px solid rgba(255, 255, 255, 0.289);
+  --textColor:black;
+  --iconShadow: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  --searchBG: rgba(0, 0, 0, 0.08);
+  --searchPH: #555555;
+  --searchBGFocus: rgba(0, 0, 0, 0.1);
+  --seachBorderFocus : inset 0 0 0 1px rgba(0, 0, 0, 0.455);
+}
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  background-size: cover;
+  align-items: flex-start;
   min-height: 100vh;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-top: 40px;
 }
 
 .container {
   width: 90%;
   max-width: 600px;
-  margin-top: 40px;
-  padding: 20px;
-  background: #ffffff97;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
+  margin-top: 20px;
+  padding: 25px;
+  background:var(--backgroundColor);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(25px);
+  border: var(--borderStyle);
+  color: var(--textColor);
+  transition: all 0.2s ease-in-out;
 }
 
 h1,
 h2 {
   text-align: center;
+  color: var(--textColor);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--textColor);
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-section {
@@ -34,19 +72,39 @@ h2 {
 
 .search-section input {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--searchBG);
+  color: var(--textColor);
+  outline: none;
+  font-size: 15px;
+}
+
+.search-section input::placeholder {
+  color: var(--searchPH);
+}
+
+.search-section input:focus {
+  background: var(--searchBGFocus);
+  box-shadow: var(--seachBorderFocus);
 }
 
 .search-section button {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
-  background: #007bff;
+  border-radius: 10px;
+  background: #3b82f6; /* Soft blue */
   color: white;
+  font-weight: 600;
+  transition: 0.25s ease;
 }
+
+.search-section button:hover {
+  background: #2563eb; /* Darker blue */
+}
+
 
 .weather-box {
   text-align: center;
@@ -54,23 +112,25 @@ h2 {
 }
 
 .weather-box img {
-  width: 80px;
+  width: 90px;
+  filter: var(--iconShadow);
 }
 
 .forecast {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .forecast-day {
-  padding: 10px;
+  padding: 12px;
   width: 30%;
   text-align: center;
 }
 
 .forecast-day img {
-  width: 50px;
+  width: 45px;
+  filter: var(--iconShadow);
 }
 
 .morning {
